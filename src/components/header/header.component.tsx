@@ -1,25 +1,28 @@
-import {BsCart3} from "react-icons/bs"
-import "./header.styles.css"
+import { BsCart3 } from "react-icons/bs";
 
-const Header =() =>{
+import Logo from "../../images/logo.png";
 
+import { HeaderContainer, HeaderItem, HeaderItens, HeaderLogo, HeaderTitle, HeaderTitleLogo } from "./header.styles";
+
+const Header = () => {
     return (
-        <div className="header-container">
-            <h2 className="header-title">Palmeiras Store</h2>
-            <div className="header-itens">
+        <HeaderContainer>
+            <HeaderTitleLogo>
+                <HeaderTitle>Bike Shop</HeaderTitle>
+                <HeaderLogo src={Logo} alt="logo"/>
+            </HeaderTitleLogo>
             
-                <div className="header-item">Explorar</div>
-                <div className="header-item">Login</div>
-                <div className="header-item">Criar Conta</div>
-                <div className="header-item"><BsCart3 size={25}/>
-                <p style={{marginLeft:5}}>5</p>
-                </div>
-            
-            </div>
-        </div>
-    )
+            <HeaderItens>
+                <HeaderItem>Explorar</HeaderItem>
+                <HeaderItem>Login</HeaderItem>
+                <HeaderItem>Criar Conta</HeaderItem>
+                <HeaderItem>
+                    <BsCart3 size={25} />
+                    <p style={{ marginLeft: 5 }}>5</p>
+                </HeaderItem>
+            </HeaderItens>
+        </HeaderContainer>
+    );
+};
 
-}
-
-
-export default Header
+export default Header;
