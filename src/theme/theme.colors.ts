@@ -1,7 +1,7 @@
 
 
 const Colors = {
-    primary: "rgba(76, 175, 80, 0.7)", // Verde médio com transparência
+    primary: "#284703", 
     text: {
         white: "#FFFFFF",  // Branco para texto claro
         dark: "#2E7D32"    // Verde escuro para texto
