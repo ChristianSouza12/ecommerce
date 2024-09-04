@@ -10,12 +10,18 @@ import {BsGoogle} from "react-icons/bs"
 import {FiLogIn} from "react-icons/fi"
 
 
+interface LoginForm {
+    email:string;
+    password: string;
+}
+
+
 const LoginPage = ( ) => {
 
     const {register,
         formState:{errors},
         handleSubmit
-                } = useForm()
+                } = useForm<LoginForm>()
 
 
 
