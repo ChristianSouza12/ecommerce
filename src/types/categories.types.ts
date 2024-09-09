@@ -1,3 +1,4 @@
+import Product from "./products.type";
 
 
 interface Category {
@@ -5,6 +6,7 @@ interface Category {
     name: string;
     displayName: string;
     imageUrl: string;
+    products: Product[]
 
 }
 

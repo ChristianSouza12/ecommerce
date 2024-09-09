@@ -19,7 +19,7 @@ const categories = [
     id: "1",
     name: "bikes",
     displayName: "Bikes",
-    imageUrl: "https://images.tcdn.com.br/img/img_prod/1112018/bicicleta_mtb_aro_29_cannondale_f_si_carbon_3_1427_2_fbc03c127083952d92b4ab8a0ab133fc.jpg",
+    imageUrl: "https://d1mo5ln9tjltxq.cloudfront.net/-/media/images/my24/bikes/mountain/cross-country/scalpel/collection-page/c24_scalpel_collection_mobile_2.ashx?mh=1200&mw=1200&hash=2214761C1A5434AA100F3F802C38029D",
     products: [
       {
         id: "2",
@@ -95,7 +95,7 @@ const categories = [
     id: "21",
     name: "bikes-urbanas",
     displayName: "Bikes de Uso Urbano",
-    imageUrl: "https://blog.bikeregistrada.com.br/wp-content/uploads/2022/05/bikes-urbanas.jpg",
+    imageUrl: "https://st2.depositphotos.com/4138543/9295/i/450/depositphotos_92953616-stock-photo-teenage-girl-with-bike-in.jpg",
     products: [
       {
         id: "22",
@@ -171,7 +171,7 @@ const categories = [
     id: "41",
     name: "bikes-infantis",
     displayName: "Bicicletas Infantis",
-    imageUrl: "https://blog.bikeregistrada.com.br/wp-content/uploads/2022/05/bicicletas-infantis.jpg",
+    imageUrl: "https://s.zst.com.br/cms-assets/2022/07/melhor-bicicleta-infantil.webp",
     products: [
       {
         id: "42",
