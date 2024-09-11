@@ -8,6 +8,8 @@ import validator from "validator"
 
 import {BsGoogle} from "react-icons/bs"
 import {FiLogIn} from "react-icons/fi"
+import { AuthError, AuthErrorCodes, signInWithEmailAndPassword } from "firebase/auth"
+import { auth } from "../config/firebase.config"
 
 
 interface LoginForm {
@@ -20,17 +22,39 @@ const LoginPage = ( ) => {
 
     const {register,
         formState:{errors},
-        handleSubmit
+        handleSubmit,
+        setError,
                 } = useForm<LoginForm>()
 
 
 
-    const handleSubmitPress = (data:any) => {
+    const handleSubmitPress = async (data:LoginForm) => {
 
-        console.log({data})
+      try{
+       const userCredentials = await signInWithEmailAndPassword(
+        auth,
+        data.email ,
+        data.password
+        )
+
+
+       console.log({userCredentials})
+
+      }catch(error){
+        
+        const _error = error as AuthError
+
+        if (_error.code === AuthErrorCodes.INVALID_LOGIN_CREDENTIALS){
+            return setError("password", { type: "mismatch" })
+
+        }
+        if(_error.code === AuthErrorCodes.INVALID_LOGIN_CREDENTIALS){
+            return setError("email" , { type: "notFound"})
+        }
+      }
 
     }
-    console.log({errors})
+    
     return (
         <>
 
@@ -56,6 +80,9 @@ const LoginPage = ( ) => {
                     <InputErrorMessage>O e-mail é obrigatório.</InputErrorMessage>
                 )}
 
+{errors?.email?.type === "notFound" && (
+                    <InputErrorMessage>E-mail não encontrado.</InputErrorMessage>
+                )}
 
                 {errors?.email?.type === "validate" && (
                     <InputErrorMessage>Digite um e-mail válido.</InputErrorMessage>
@@ -68,6 +95,10 @@ const LoginPage = ( ) => {
 
                 {errors?.password?.type === "required" && (
                     <InputErrorMessage>A senha é obrigatória.</InputErrorMessage>
+                )}
+
+{errors?.password?.type === "mismatch" && (
+                    <InputErrorMessage>E-mail ou senha inválidos.</InputErrorMessage>
                 )}
              </LoginInputContainer>
 
