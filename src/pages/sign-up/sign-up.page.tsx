@@ -10,6 +10,9 @@ import InputErrorMessage from "../../components/input-error-message/input-error-
 import { AuthError, createUserWithEmailAndPassword , AuthErrorCodes } from "firebase/auth"
 import { auth, db } from "../../config/firebase.config"
 import { addDoc, collection } from "firebase/firestore"
+import { useContext, useEffect } from "react"
+import { UserContext } from "../../contexts/user.context"
+import { useNavigate } from "react-router-dom"
 
 
 interface SignUpForm{
@@ -31,6 +34,22 @@ const SignUpPage = () => {
     } = useForm<SignUpForm>()
 
     const watchPassword = watch("password")
+
+
+    const {isAuthenticated} = useContext(UserContext)
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if(isAuthenticated){
+            navigate("/")
+        }
+       
+
+    },[isAuthenticated, navigate])
+
+
+
+
 
     const handleSubmitPress = async (data:SignUpForm) => {
         try{

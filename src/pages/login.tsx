@@ -11,7 +11,10 @@ import {FiLogIn} from "react-icons/fi"
 import { AuthError, AuthErrorCodes,  signInWithEmailAndPassword, signInWithPopup } from "firebase/auth"
 import { auth, db, googleProvider } from "../config/firebase.config"
 import { addDoc, collection, getDocs, query, where } from "firebase/firestore"
-
+import { useEffect } from "react"
+import { useContext } from "react"
+import { UserContext } from "../contexts/user.context"
+import { useNavigate } from "react-router-dom"
 
 interface LoginForm {
     email:string;
@@ -26,6 +29,21 @@ const LoginPage = ( ) => {
         handleSubmit,
         setError,
                 } = useForm<LoginForm>()
+
+
+const {isAuthenticated} = useContext(UserContext)
+
+const navigate = useNavigate()
+
+useEffect(() => {
+    
+    if(isAuthenticated){
+        navigate("/")
+
+    }
+
+},[isAuthenticated, navigate])
+    
 
 
 
