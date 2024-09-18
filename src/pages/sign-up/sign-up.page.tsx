@@ -10,9 +10,10 @@ import InputErrorMessage from "../../components/input-error-message/input-error-
 import { AuthError, createUserWithEmailAndPassword , AuthErrorCodes } from "firebase/auth"
 import { auth, db } from "../../config/firebase.config"
 import { addDoc, collection } from "firebase/firestore"
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useState } from "react"
 import { UserContext } from "../../contexts/user.context"
 import { useNavigate } from "react-router-dom"
+import Loading from "../../components/loading/loading.component"
 
 
 interface SignUpForm{
@@ -32,6 +33,9 @@ const SignUpPage = () => {
         watch,
         setError,
     } = useForm<SignUpForm>()
+
+    const [isLoading, setIsLoading] = useState(false)
+
 
     const watchPassword = watch("password")
 
@@ -53,6 +57,7 @@ const SignUpPage = () => {
 
     const handleSubmitPress = async (data:SignUpForm) => {
         try{
+            setIsLoading(true)
           const userCredentials= await createUserWithEmailAndPassword(auth, data.email , data.password)
 
 
@@ -74,6 +79,9 @@ const SignUpPage = () => {
 
             }
         }
+        finally{
+            setIsLoading(false)
+        }
 
     }
 
@@ -83,6 +91,10 @@ const SignUpPage = () => {
         <>
 
         <Header/>
+
+        {
+            isLoading && <Loading/>
+        }
         <SignUpContainer>
             <SignUpContent>
                 <SignUpHeadLine>Crie sua conta</SignUpHeadLine>
