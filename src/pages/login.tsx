@@ -11,10 +11,11 @@ import {FiLogIn} from "react-icons/fi"
 import { AuthError, AuthErrorCodes,  signInWithEmailAndPassword, signInWithPopup } from "firebase/auth"
 import { auth, db, googleProvider } from "../config/firebase.config"
 import { addDoc, collection, getDocs, query, where } from "firebase/firestore"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useContext } from "react"
 import { UserContext } from "../contexts/user.context"
 import { useNavigate } from "react-router-dom"
+import Loading from "../components/loading/loading.component"
 
 interface LoginForm {
     email:string;
@@ -29,6 +30,9 @@ const LoginPage = ( ) => {
         handleSubmit,
         setError,
                 } = useForm<LoginForm>()
+
+
+    const [isLoading, setIsLoading] = useState(false)
 
 
 const {isAuthenticated} = useContext(UserContext)
@@ -50,6 +54,7 @@ useEffect(() => {
     const handleSubmitPress = async (data:LoginForm) => {
 
       try{
+        setIsLoading(true)
        const userCredentials = await signInWithEmailAndPassword(
         auth,
         data.email ,
@@ -69,13 +74,17 @@ useEffect(() => {
         }
         if(_error.code === AuthErrorCodes.INVALID_LOGIN_CREDENTIALS){
             return setError("email" , { type: "notFound"})
-        }
-      }
+        } 
+     
+      }   finally{
+        setIsLoading(false)
+    }
 
     }
 
     const handleSignInWithGooglePress = async () => {
         try{
+            setIsLoading(true)
            const userCredentials =  await signInWithPopup(auth,googleProvider)
 
           const querySnapshot =  await getDocs(query(collection(db,"users"),where("id","==",userCredentials.user.uid)))
@@ -107,6 +116,8 @@ useEffect(() => {
         }catch(error){
             console.log(error);
 
+        }finally{
+            setIsLoading(false)
         }
     }
 
@@ -116,6 +127,7 @@ useEffect(() => {
         <>
 
         <Header/>
+        {isLoading && <Loading/>}
 
         <LoginContainer>
         <LoginContent>
