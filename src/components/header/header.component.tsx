@@ -15,6 +15,11 @@ const Header = () => {
     const {isAuthenticated} = useContext(UserContext)
 
 
+    const handleLogoCLick = () => {
+        navigate("/")
+    }
+
+
 
     const handleLoginClick = () => {
         navigate("/login")
@@ -30,7 +35,7 @@ const Header = () => {
     return (
         <HeaderContainer>
             <HeaderTitleLogo>
-                <HeaderTitle>Bike Shop</HeaderTitle>
+                <HeaderTitle onClick={handleLogoCLick}>Bike Shop</HeaderTitle>
                 <HeaderLogo src={Logo} alt="logo"/>
             </HeaderTitleLogo>
             

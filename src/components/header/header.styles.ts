@@ -26,6 +26,12 @@ export const HeaderTitle = styled.h2`
     font-weight: bold;
     font-size: 1.5rem;
     margin-right: 20px; /* Espaçamento entre o título e o logo */
+    
+    &:hover{
+        cursor: pointer;
+        color: ${Colors.primary};
+        transition: 0.4s ease all;
+    }
 
 
 `
