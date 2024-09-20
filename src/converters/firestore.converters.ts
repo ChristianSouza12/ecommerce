@@ -5,30 +5,26 @@ import User from "../types/user.types";
 
 
 export const categoryConverter = {
-    toFirestore(category: Category): DocumentData {
-
-        return {...category}
-
+    toFirestore(category: Category) {
+      return {
+        displayName: category.displayName,
+        imageUrl: category.imageUrl,
+        name: category.name,
+        products: category.products, // Inclua products
+      };
     },
-    fromFirestore(
-        snapshot: QueryDocumentSnapshot,
-         options: SnapshotOptions
-        ): Category{
-
-        const data = snapshot.data(options)
-
-
-        return {
-            id:data.id,
-            displayName: data.displayName,
-            imageUrl: data.imageUrl,
-            name: data.name,
-            products: data.product
-        }
-
-    }
-}
-
+    fromFirestore(snapshot: any) {
+      const data = snapshot.data();
+      return {
+        id: snapshot.id,
+        displayName: data.displayName,
+        imageUrl: data.imageUrl,
+        name: data.name,
+        products: data.products || [], // Garante que seja um array
+      };
+    },
+  };
+  
 
 export const userConverter = {
     toFirestore(user: User): DocumentData {

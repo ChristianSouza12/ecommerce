@@ -4,6 +4,7 @@ import CategoriesOverview from "../../components/categories-overview/categories-
 
 
 
+
 const ExplorerPage : FunctionComponent = () => {
 
     return(

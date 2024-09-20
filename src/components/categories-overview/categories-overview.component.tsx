@@ -1,7 +1,8 @@
 import { FunctionComponent, useContext, useEffect } from "react"
-import { Container } from "./categories.overview.styles"
+
 import { CategoryContext } from "../../contexts/category.context"
-import CategoryOverview from "../categories-list/categories-list.component"
+import CategoryOverview from "../category-overview/category-overview.component"
+import { Container } from "./categories-overview.styles"
 
 
 const CategoriesOverview : FunctionComponent = () => {
