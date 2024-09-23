@@ -11,7 +11,7 @@ interface CartContextProviderProps {
     children: ReactNode; // Especifica que o componente espera receber children
 }
 
-const CartContext = createContext<ICartContext>({
+export const CartContext = createContext<ICartContext>({
     isVisible: false,
     products: [],
     toggleCart: () => {}

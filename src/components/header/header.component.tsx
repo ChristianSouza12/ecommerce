@@ -7,12 +7,15 @@ import { signOut } from "firebase/auth";
 import { auth } from "../../config/firebase.config";
 import { UserContext } from "../../contexts/user.context";
 import { useContext } from "react";
+import { CartContext } from "../../contexts/cart.context";
 
 const Header = () => {
     const navigate = useNavigate()
 
 
     const {isAuthenticated} = useContext(UserContext)
+
+    const {toggleCart} = useContext(CartContext)
 
 
     const handleLogoCLick = () => {
@@ -59,7 +62,7 @@ const Header = () => {
 
                 )}
                
-                <HeaderItem>
+                <HeaderItem onClick={toggleCart}  >
                     <BsCart3 size={25} />
                     <p style={{ marginLeft: 5 }}>5</p>
                 </HeaderItem>

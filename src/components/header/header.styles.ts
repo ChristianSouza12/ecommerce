@@ -17,7 +17,7 @@ export const HeaderContainer = styled.div`
     padding: 20px;
     color: ${Colors.text.white};
     position: relative; 
-    z-index: 1; 
+    z-index: 2; 
 
 `
 
