@@ -71,7 +71,6 @@ const CategoryDetails : FunctionComponent <CategoryDetailsProps> = ({categoryId}
             <CategoryTitle>
                 <IconContainer onClick={handleBackClick}   >
                     <BiChevronLeft size={36}/>
-
                 </IconContainer>
                 <p>Explorar {category?.displayName}</p>
             </CategoryTitle>

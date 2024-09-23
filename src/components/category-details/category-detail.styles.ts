@@ -24,15 +24,31 @@ p{
 `
 
 export const ProductsContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: start;
+  margin-top: 5px;
+  grid-row-gap: 20px;
 
-display: grid;
-grid-template-columns: repeat(4,1fr);
-justify-content: start;
-margin-top: 5px;
-grid-row-gap: 20px;
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 
+    img {
+      width: 100%;
+      height: auto; /* Garante que a imagem não fique distorcida */
+    }
 
-`
+    p {
+      margin-top: 10px; /* Adiciona espaçamento entre a imagem e o nome */
+      font-size: 18px;
+      font-weight: 500;
+    }
+  }
+`;
+
 
 export const IconContainer = styled.div`
 
