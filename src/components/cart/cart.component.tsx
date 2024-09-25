@@ -5,12 +5,13 @@ import CustomButton from "../custom-buttom/custom-buttom.component";
 
 import {BsCartCheck} from "react-icons/bs"
 import  { CartContext } from "../../contexts/cart.context";
+import CartItem from "../cart-item/cart-item.component";
 
 
 
 const Cart : FunctionComponent = () => {
 
-    const {isVisible,toggleCart} = useContext(CartContext)
+    const {isVisible,toggleCart, products} = useContext(CartContext)
 
         return (
 
@@ -19,6 +20,7 @@ const Cart : FunctionComponent = () => {
                 <CartContent>
                     <CartTitle>Seu Carrinho.</CartTitle>
 
+                    {products.map(product => <CartItem  key={product.id}  product={product}   />)}
 
                     <CartTotal>Total : R$ 999</CartTotal>
                     <CustomButton  startIcon={<BsCartCheck     /> }   >Finalize sua Compra.</CustomButton>

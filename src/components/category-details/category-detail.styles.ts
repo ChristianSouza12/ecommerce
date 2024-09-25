@@ -56,5 +56,7 @@ display: flex;
 
 &:hover{
     cursor: pointer;
+    color: #78804f;
+    transition: 0.3s ease ease-in-out;
 }
 `
