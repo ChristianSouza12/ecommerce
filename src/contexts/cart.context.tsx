@@ -1,4 +1,4 @@
-import { createContext, FunctionComponent, useState, ReactNode } from "react";
+import { createContext, FunctionComponent, useState, ReactNode, useMemo } from "react";
 import CartProduct from "../types/cart.types";
 import Product from "../types/products.type";
 
@@ -10,6 +10,7 @@ interface ICartContext {
     removeProductFromCart : (productId: string) => void;
     increaseProductQuantity : (productId:string) => void
     decreaseProductQuantity : (productId : string) => void
+    productsTotalPrice: number
     
 }
 
@@ -25,6 +26,7 @@ export const CartContext = createContext<ICartContext>({
     removeProductFromCart : () => {},
     increaseProductQuantity: () => {},
     decreaseProductQuantity: () => {},
+    productsTotalPrice:0
 
 
 });
@@ -35,6 +37,14 @@ export const CartContext = createContext<ICartContext>({
 const CartContextProvider: FunctionComponent<CartContextProviderProps> = ({ children }) => {
     const [isVisible, setIsVisible] = useState(false);
     const [products, setProducts] = useState<CartProduct[]>([]);
+
+
+    const productsTotalPrice = useMemo(() => {
+        return products.reduce((acc,currentProduct) => {
+            return acc + currentProduct.price * currentProduct.quantity
+    
+        },0)
+    },[products])
 
     const toggleCart = () => {
         setIsVisible(prevState => !prevState);
@@ -81,7 +91,7 @@ const CartContextProvider: FunctionComponent<CartContextProviderProps> = ({ chil
 
 
     return (
-        <CartContext.Provider value={{ isVisible, products, toggleCart , addProductToCart ,removeProductFromCart , increaseProductQuantity , decreaseProductQuantity }}>
+        <CartContext.Provider value={{ isVisible, products, toggleCart , addProductToCart ,removeProductFromCart , increaseProductQuantity , decreaseProductQuantity , productsTotalPrice}}>
             {children}
         </CartContext.Provider>
     );
