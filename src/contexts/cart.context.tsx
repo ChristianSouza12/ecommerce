@@ -6,7 +6,8 @@ interface ICartContext {
     isVisible: boolean;
     toggleCart: () => void;
     products: CartProduct[];
-    addProductToCart: (product: Product) => void
+    addProductToCart: (product: Product) => void;
+    removeProductFromCart : (productId: string) => void;
 }
 
 interface CartContextProviderProps {
@@ -17,7 +18,8 @@ export const CartContext = createContext<ICartContext>({
     isVisible: false,
     products: [],
     toggleCart: () => {},
-    addProductToCart: () => {}
+    addProductToCart: () => {},
+    removeProductFromCart : () => {}
 });
 
 
@@ -51,8 +53,15 @@ const CartContextProvider: FunctionComponent<CartContextProviderProps> = ({ chil
 
     }
 
+    const removeProductFromCart = (productId: string) => {
+        setProducts((products =>
+             products.filter((product) => product.id !== productId)
+        ))
+
+    }
+
     return (
-        <CartContext.Provider value={{ isVisible, products, toggleCart , addProductToCart }}>
+        <CartContext.Provider value={{ isVisible, products, toggleCart , addProductToCart ,removeProductFromCart }}>
             {children}
         </CartContext.Provider>
     );
