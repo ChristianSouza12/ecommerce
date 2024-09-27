@@ -1,6 +1,6 @@
 import { FunctionComponent, useContext } from "react";
 
-import { CartContainer, CartContent , CartEscapeArea , CartTitle, CartTotal ,} from "./cart.component.styles"
+import { CartContainer, CartContent , CartEscapeArea , CartTitle, CartTotal  } from "./cart.component.styles"
 import CustomButton from "../custom-buttom/custom-buttom.component";
 
 import {BsCartCheck} from "react-icons/bs"
@@ -11,7 +11,7 @@ import CartItem from "../cart-item/cart-item.component";
 
 const Cart : FunctionComponent = () => {
 
-    const {isVisible,toggleCart, products , productsTotalPrice} = useContext(CartContext)
+    const {isVisible,toggleCart, products , productsTotalPrice , productsCount} = useContext(CartContext)
 
         return (
 
@@ -22,8 +22,19 @@ const Cart : FunctionComponent = () => {
 
                     {products.map(product => <CartItem  key={product.id}  product={product}   />)}
 
-                    <CartTotal>Total : R${productsTotalPrice}</CartTotal>
-                    <CustomButton  startIcon={<BsCartCheck     /> }   >Finalize sua Compra.</CustomButton>
+                    {productsCount > 0 && (
+                        <CartTotal>Total : R${productsTotalPrice}</CartTotal>
+                    )}
+
+                    
+                    {productsCount > 0 && (
+                        <CustomButton  startIcon={<BsCartCheck     /> }   >Finalize sua Compra.</CustomButton>
+                    )}
+
+                    {productsCount === 0 && (
+                        <p>Carrinho vazio, adicione algum produto.</p>
+
+                    )}
                 </CartContent>
             </CartContainer>
 
