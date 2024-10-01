@@ -14,8 +14,9 @@ const Colors = {
         background: "#C8E6C9",  // Verde claro para fundo de input
         placeholder: "#66BB6A"  // Verde médio para texto de placeholder
     },
-    error: "#D32F2F" // Vermelho para mensagens de erro, para destacar bem dos verdes
-};
+    error: "#D32F2F" ,
+    success: "#008000"
+}
 
 
 
