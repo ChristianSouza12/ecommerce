@@ -27,6 +27,7 @@ import PaymentConfirmationPage from "./pages/payment-confirmation/payment.confir
 const App: FunctionComponent = () =>{
 
     const [isInitializing, setIsInitializing] = useState(true)
+    
 
 
     const {isAuthenticated, loginUser, logoutUser} = useContext(UserContext)
