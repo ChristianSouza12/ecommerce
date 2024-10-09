@@ -17,7 +17,16 @@ p{
 
 button{
     width: 650px;
+    
 }
+
+@media(max-width:768px){
+    button{
+        width: 100%;
+    }
+    padding:30px;
+        
+    }
 
 
 
@@ -39,6 +48,8 @@ margin-bottom: 15px;
 
 
 
+
+
 ::-webkit-scrollbar{
     width: 5px;
 }
@@ -56,6 +67,11 @@ margin-bottom: 15px;
     background: ${Colors.text.dark};
 }
 
+@media(max-width:768px){
+    min-width: 100%;
+        
+    }
+
 
 
 
@@ -70,6 +86,11 @@ width: 650px;
 font-size: 1.2rem;
 font-weight: 600;
 margin-bottom: 15px;
+
+@media(max-width:768px){
+    width: 100%;
+        
+    }
 
 
 
