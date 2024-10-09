@@ -27,4 +27,10 @@ display: flex;
 width: 100%;
 justify-content: space-between;
 flex-wrap: wrap;
+
+
+@media(max-width:768px){
+    grid-row-gap: 20px;
+        
+    }
 `
