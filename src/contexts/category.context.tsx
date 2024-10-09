@@ -39,9 +39,9 @@ const CategoryContextProvider: FunctionComponent<CategoryContextProviderProps> =
       });
 
       setCategories(categoriesFromFirestore);
-      console.log({ categoriesFromFirestore });
+      
     } catch (error) {
-      console.log("Erro ao buscar categorias:", error);
+      
     }finally{
         setIsLoading(false)
     }

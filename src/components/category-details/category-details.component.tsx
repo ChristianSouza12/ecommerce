@@ -45,7 +45,7 @@ const CategoryDetails : FunctionComponent <CategoryDetailsProps> = ({categoryId}
                 setCategory(category)
 
             }catch(error){
-                console.log(error)
+               
             }finally{
                 setIsLoading(false)
             }

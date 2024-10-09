@@ -17,8 +17,7 @@ const CategoryOverview: FunctionComponent<CategoryOverviewProps> = ({
 }) => {
   // Verifica os valores de category e category.products
   useEffect(() => {
-    console.log("Category:", category);
-    console.log("Category Products:", category?.products);
+   
   }, [category]);
 
   const productsToDisplay = category.products?.slice(0, 4) || [];

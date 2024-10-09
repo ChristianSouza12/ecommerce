@@ -19,18 +19,30 @@ export const HeaderContainer = styled.div`
     position: relative; 
     z-index: 2; 
 
+    @media(max-width:768px){
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    
+
 `
 
 export const HeaderTitle = styled.h2`
 
     font-weight: bold;
     font-size: 1.5rem;
-    margin-right: 20px; /* Espaçamento entre o título e o logo */
+    margin-right: 20px;
     
     &:hover{
         cursor: pointer;
         color: ${Colors.primary};
         transition: 0.4s ease all;
+    }
+
+    @media(max-width:768px){
+       margin-bottom:16px ;
     }
 
 
@@ -41,6 +53,10 @@ export const HeaderItens = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @media(max-width:768px){
+     width :100%;
+    justify-content:space-evenly   }
 
 
 `
@@ -57,6 +73,9 @@ export const HeaderItem = styled.div`
 
     &:nth-child(1),&:nth-child(2),&:nth-child(3){
         margin-right: 40px;
+        @media(max-width:768px){
+       margin-right: 0;
+    }
     }
 
     &:hover{
@@ -69,7 +88,11 @@ export const HeaderItem = styled.div`
 
 export const HeaderTitleLogo = styled.div`
 display: flex;
-align-items: center; /* Alinha verticalmente o título e o logo */
+align-items: center; 
+
+@media(max-width:768px){
+       margin-bottom:16px ;
+    }
 
 
 `

@@ -62,7 +62,7 @@ useEffect(() => {
         )
 
 
-       console.log({userCredentials})
+      
 
       }catch(error){
         
@@ -114,7 +114,7 @@ useEffect(() => {
            
 
         }catch(error){
-            console.log(error);
+           
 
         }finally{
             setIsLoading(false)
