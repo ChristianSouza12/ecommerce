@@ -38,15 +38,21 @@ export const ProductsContainer = styled.div`
 
     img {
       width: 100%;
-      height: auto; /* Garante que a imagem não fique distorcida */
+      height: auto; 
     }
 
     p {
-      margin-top: 10px; /* Adiciona espaçamento entre a imagem e o nome */
+      margin-top: 10px; 
       font-size: 18px;
       font-weight: 500;
     }
   }
+
+  @media(max-width:768px){
+    display: flex;
+    flex-direction: column;
+        
+      }
 `;
 
 
