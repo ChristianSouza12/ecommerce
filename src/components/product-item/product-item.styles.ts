@@ -10,6 +10,10 @@ export const ProductContainer = styled.div`
   position: relative;
   width: 300px;
   margin: 10px;
+  @media(max-width:768px){
+    width: 100%;
+        
+      }
 `;
 
 export const ProductImage = styled.div<ProductImageProps>`
@@ -63,6 +67,12 @@ export const ProductImage = styled.div<ProductImageProps>`
     }
  
   }
+
+  @media(max-width:768px){
+
+      width:100%
+        
+      }
   
 `;
 
