@@ -22,6 +22,12 @@ display: flex;
     border-radius: 10px;
     box-shadow: 2px 2px 2px rgba(0,0,0, 0.25);
     background-color: ${Colors.background.dark};
+
+    @media(max-width:768px){
+        padding:0 50px 0 50px;
+        height: 300px;
+
+    }
     
     
 
